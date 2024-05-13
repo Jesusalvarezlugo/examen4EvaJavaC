@@ -9,6 +9,7 @@ namespace examen4EvaJava.Controladores
         {
             MenuInterfaz mi = new MenuImplementacion();
             OperativaInterfaz oi = new OperativaImplementacion();
+            FicheroInterfaz fi = new FicheroImplementacion();
             int opcionP;
             bool cerrarMenu = false;
             List<ClienteDto> listaClientes = new List<ClienteDto>();
@@ -22,6 +23,7 @@ namespace examen4EvaJava.Controladores
                 {
                     case 0:
                         Console.WriteLine("[INFO] se saldra de la aplicacion.");
+                        fi.ficheroLog("[INFO] se saldra de la aplicacion");
                         cerrarMenu=true;
                         break;
 

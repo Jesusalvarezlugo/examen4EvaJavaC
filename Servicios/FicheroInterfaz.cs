@@ -10,5 +10,7 @@ namespace examen4EvaJava.Servicios
     internal interface FicheroInterfaz
     {
         public void imprimirCitas(List<CitaDto> listaAntgCitas, List<ClienteDto> listaAntgClientes);
+
+        public void ficheroLog(string texto);
     }
 }

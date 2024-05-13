@@ -9,6 +9,22 @@ namespace examen4EvaJava.Servicios
 {
     internal class FicheroImplementacion : FicheroInterfaz
     {
+        public void ficheroLog(string texto)
+        {
+            try
+            {
+                DateTime fechaActual = DateTime.Now;
+                string rutaFichero = "log-" + fechaActual.Date + ".txt";
+                StreamWriter sw = new StreamWriter(rutaFichero);
+
+                sw.WriteLine(texto);
+
+            }catch(IOException e)
+            {
+                Console.WriteLine("[ERROR] al escribir en el fichero.");
+            }
+        }
+
         public void imprimirCitas(List<CitaDto> listaAntgCitas,List<ClienteDto> listaAntgClientes)
         {
             string fechaAConsultar;
