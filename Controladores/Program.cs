@@ -12,6 +12,7 @@ namespace examen4EvaJava.Controladores
             int opcionP;
             bool cerrarMenu = false;
             List<ClienteDto> listaClientes = new List<ClienteDto>();
+            List<CitaDto> listaCitas = new List<CitaDto>();  
 
             while(!cerrarMenu)
             {
@@ -26,12 +27,12 @@ namespace examen4EvaJava.Controladores
 
                     case 1:
                         Console.WriteLine("[INFO] se accedera al menu de los empleados.");
-                        oi.menuEmpleado(listaClientes);
+                        oi.menuEmpleado(listaClientes,listaCitas);
                         break;
 
                     case 2:
                         Console.WriteLine("[INFO] se accedera al menu de los clientes.");
-                        oi.menuCliente(listaClientes);
+                        oi.menuCliente(listaClientes,listaCitas);
                         break;
 
                     case 3:
@@ -45,6 +46,11 @@ namespace examen4EvaJava.Controladores
                                 Console.WriteLine(cliente.ToString());
                             }
                             
+                        }
+
+                        foreach(CitaDto cita in listaCitas)
+                        {
+                            Console.WriteLine(cita.ToString());
                         }
                         break;
                         

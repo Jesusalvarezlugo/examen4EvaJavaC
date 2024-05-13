@@ -11,8 +11,8 @@ namespace examen4EvaJava.Servicios
     {
         
 
-        public void menuCliente(List<ClienteDto> listaAntgCliente);
+        public void menuCliente(List<ClienteDto> listaAntgCliente,List<CitaDto> listaAntgCita);
 
-        public void menuEmpleado(List<ClienteDto> listaAntgCliente);
+        public void menuEmpleado(List<ClienteDto> listaAntgCliente, List<CitaDto> listaAntgCita);
     }
 }

@@ -52,7 +52,7 @@ namespace examen4EvaJava.Servicios
 
 
 
-        public void menuCliente(List<ClienteDto> listaAntgCliente)
+        public void menuCliente(List<ClienteDto> listaAntgCliente, List<CitaDto> listaAntgCita)
         {
             int opcion;
             bool cerrarMenu = false;
@@ -73,17 +73,24 @@ namespace examen4EvaJava.Servicios
                         Console.WriteLine("[INFO] Se registrara un cliente nuevo.");
                         registroCliente(listaAntgCliente);
                         break;
+
+                    case 2:
+                        Console.WriteLine("[INFO] se solicitara una cita.");
+                        solicitudCita( listaAntgCita,  listaAntgCliente);
+                        break;
                 }
             }
 
 
         }
 
-        public void menuEmpleado(List<ClienteDto> listaAntgCliente)
+        public void menuEmpleado(List<ClienteDto> listaAntgCliente,List<CitaDto> listaAntgCitas)
         {
             int opcion;
             bool cerrarMenu = false;
             MenuInterfaz mi = new MenuImplementacion();
+            FicheroInterfaz fi = new FicheroImplementacion();
+            
 
             while (!cerrarMenu)
             {
@@ -99,6 +106,11 @@ namespace examen4EvaJava.Servicios
                     case 1:
                         Console.WriteLine("[INFO] se validara un cliente.");
                         validarCliente(listaAntgCliente);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("[INFO] se imprimiran las citas");
+                        fi.imprimirCitas(listaAntgCitas,listaAntgCliente);
                         break;
                 }
             }
@@ -179,6 +191,8 @@ namespace examen4EvaJava.Servicios
             horaCita=TimeOnly.Parse(citaHoraS);
 
             cita.FechaCita = Convert.ToDateTime(fechaCita + " " + horaCita);
+
+            listaAntgCita.Add(cita);
 
 
         }

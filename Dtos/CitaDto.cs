@@ -21,5 +21,14 @@ namespace examen4EvaJava.Dtos
         public string DniClienteC { get => dniClienteC; set => dniClienteC = value; }
         public string EspecialidadCita { get => especialidadCita; set => especialidadCita = value; }
         public DateTime FechaCita { get => fechaCita; set => fechaCita = value; }
+
+
+        override
+            public string ToString()
+        {
+            string texto=this.dniClienteC+"\t"+this.especialidadCita+"\t"+this.fechaCita;
+
+            return texto;
+        }
     }
 }
