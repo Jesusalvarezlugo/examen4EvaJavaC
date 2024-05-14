@@ -14,14 +14,20 @@ namespace examen4EvaJava.Servicios
             try
             {
                 DateTime fechaActual = DateTime.Now;
-                string rutaFichero = "log-" + fechaActual.Date + ".txt";
-                StreamWriter sw = new StreamWriter(rutaFichero);
+                
+                string fechaString=fechaActual.Date.ToString("ddMMyyyy");
+                
+                string rutaFichero = "log-" + fechaString+ ".txt";
+                StreamWriter sw = File.AppendText(rutaFichero);
 
-                sw.WriteLine(texto);
+                sw.WriteLine(texto,true);
+
+                sw.Close();
 
             }catch(IOException e)
             {
                 Console.WriteLine("[ERROR] al escribir en el fichero.");
+                Console.WriteLine(e.ToString());
             }
         }
 
@@ -37,7 +43,9 @@ namespace examen4EvaJava.Servicios
             string mes=partirFecha[1];
             string anio=partirFecha[2];
             string rutaFichero = "informe" + dia + mes + anio + ".txt";
+            //Se puede hacer con un replace y quitar los guiones.
             StreamWriter sw = new StreamWriter(rutaFichero);
+            bool aux = false;
 
             foreach(CitaDto cita in listaAntgCitas)
             {
@@ -48,18 +56,17 @@ namespace examen4EvaJava.Servicios
                         if (cita.DniClienteC == cliente.DniCliente)
                         {
                             sw.WriteLine(cliente.DniCliente+";"+cliente.NombreCompleto+";"+cita.EspecialidadCita);
+                            aux = true;
                         }
-                        else
-                        {
-                            Console.WriteLine("No hay informacion que mostrar.");
-                            break;
-                        }
-                        
-                                              
+                                                                                                                                                                   
                     }
-
-                    
+                 
                 }
+            }
+
+            if (aux = false)
+            {
+                Console.WriteLine("No hay informacion que mostrar.");
             }
 
             sw.Close();
